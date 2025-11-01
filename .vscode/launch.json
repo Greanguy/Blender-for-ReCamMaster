@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Blender",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "subProcess": false,
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "cwd": "/home/xu_zifan/HOIrecon/objaverse-backup/scripts/rendering"
+            // "args": [
+            // ],
+            // "env": {
+            //     "PYTHONUNBUFFERED": "1"
+            // }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+loguru
+pyarrow
+fastparquet
+requests
+pandas
+pyarrow
+tqdm
+fsspec>=2022.11.0
+gputil==1.4.0

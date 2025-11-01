@@ -1,0 +1,4 @@
+git+https://github.com/facebookresearch/pytorch3d.git@stable
+git+https://github.com/mattloper/chumpy.git#egg=chumpy
+git+https://github.com/MPI-IS/configer.git
+git+https://github.com/MPI-IS/mesh.git
