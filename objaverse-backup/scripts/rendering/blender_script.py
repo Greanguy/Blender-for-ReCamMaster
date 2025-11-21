@@ -816,7 +816,7 @@ def render_object(
     os.makedirs(output_dir, exist_ok=True)
     frames_dir = os.path.join(output_dir, "frames")
     videos_dir = os.path.join(output_dir, "videos")
-    cam_name = "cam01"  
+    cam_name = "cam03"  
     cameras_dir = os.path.join(output_dir, f"cameras_{cam_name}")
     os.makedirs(frames_dir, exist_ok=True)
     os.makedirs(cameras_dir, exist_ok=True)

@@ -106,7 +106,26 @@ def handle_found_object(
         frames_dir = os.path.join(target_directory, "frames")
         videos_dir = os.path.join(target_directory, "videos")
         input_pattern = os.path.join(frames_dir, "%03d.png")
-        cam_name = "cam01"
+
+        cam_folders = []
+        for item in os.listdir(target_directory):
+            item_path = os.path.join(target_directory, item)
+            if os.path.isdir(item_path) and item.startswith("cameras_cam"):
+                # 提取camXX部分（例如从"cameras_cam01"提取"cam01"）
+                cam_name_part = item.replace("cameras_", "")
+                cam_folders.append(cam_name_part)
+        existing_videos = []
+        if os.path.exists(videos_dir):
+            for video_file in os.listdir(videos_dir):
+                if video_file.endswith(".mp4"):
+                    # 去掉.mp4后缀得到camxx
+                    cam_name_from_video = os.path.splitext(video_file)[0]
+                    existing_videos.append(cam_name_from_video)
+        cam_folders_set = set(cam_folders)
+        existing_videos_set = set(existing_videos)
+        missing_cams = cam_folders_set - existing_videos_set
+        cam_name = sorted(list(missing_cams))[0]
+
         render_count = num_renders
         video_path = os.path.join(videos_dir, f"{cam_name}.mp4")
         # 使用ffmpeg将图片序列转换为视频
@@ -286,7 +305,7 @@ def get_local_textured_objects(
     objects_file: str,
     object_paths_gz: str,
     n: int = 10,
-    start_index: int = 2,
+    start_index: int = 9,
 ) -> pd.DataFrame:
     """Read objects_with_texture.txt and object-paths.json.gz and return a DataFrame similar to
     what get_random_textured_objects_from_objaverse would return.
